@@ -7,7 +7,7 @@ create_dir() {
                 mkdir "$dir"
                 echo "Created Dir: $dir"
         else
-                echo "Dir exsists: $dir"
+                echo "Dir exsists: $dir" >/dev/null
         fi
 }
 
@@ -20,10 +20,20 @@ organize_files() {
         arch=("zip" "gz" "rar")
 
         while IFS= read -r file; do
-
-        done < <(find "dir" -maxdepth 1 -type f)
-
-
+                if [ "$file" ]; then
+                        ext=$( echo "$file" | rev | cut -d '.' -f1 | rev)
+                        if [[ " ${imgs[@]} " =~ "$ext " ]]; then
+                                create_dir "$dir/Images"
+                                mv "$file" "$dir/Images"
+                        elif [[ " ${docs[@]} " =~ "$ext " ]]; then
+                                create_dir "$dir/Docs"
+                                mv "$file" "$dir/Docs"
+                        elif [[ " ${arch[@]} " =~ "$ext " ]]; then
+                                create_dir "$dir/Arch"
+                                mv "$file" "$dir/Arch"
+                        fi
+                fi
+        done < <(find "$dir" -maxdepth 1 -type f)
 }
 
 #Run the program
