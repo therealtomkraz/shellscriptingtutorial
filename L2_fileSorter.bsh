@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#Create dir
+create_dir() {
+        local dir=$1
+        if [ ! -d "$dir" ]; then
+                mkdir "$dir"
+                echo "Created Dir: $dir"
+        else
+                echo "Dir exsists: $dir"
+        fi
+}
+
+#Sort and order files into directories. 
+organize_files() {
+        local dir=$1
+
+        imgs=("jpg" "png" "gif")
+        docs=("pdf" "docx" "txt")
+        arch=("zip" "gz" "rar")
+
+        while IFS= read -r file; do
+
+        done < <(find "dir" -maxdepth 1 -type f)
+
+
+}
+
+#Run the program
+main() {
+        echo "File Orginizer Script"
+        read -p "Enter directory to orginaize: " target_dir
+
+        if [ -d "$target_dir" ]; then
+                organize_files "$target_dir"
+                echo "Organization complete!"
+        else
+                echo "Error: Dir not found!"
+        fi
+}
+
+main
