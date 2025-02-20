@@ -41,7 +41,7 @@ organize_files() {
                                 mv "$file" "$dir/Arch"     # Move file to Arch
                         fi
                 fi
-        done < <(find "$dir" -maxdepth 1 -type f)  # Find all files in directory
+        done < <(find "$dir" -maxdepth 1 -type f)  # Find all files in directory using Process substitution
 }
 
 # Main program flow
