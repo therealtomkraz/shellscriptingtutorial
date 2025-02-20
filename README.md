@@ -105,11 +105,11 @@ This script creates 1000 random files in a directory.
 
 Clone this repository:
 
-    git clone https://github.com/yourusername/bash-scripting-utilities.git
+    git clone https://github.com/therealtomkraz/shellscriptingtutorial.git
 
 Navigate to the script directory:
 
-    cd bash-scripting-utilities
+    cd shellscriptingtutorial
 
 Make the scripts executable:
 
