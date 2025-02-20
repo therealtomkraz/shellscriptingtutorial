@@ -1,111 +1,96 @@
-Bash Scripting Utilities
 
-This repository contains a collection of Bash scripts designed to demonstrate practical applications of shell scripting. These scripts cover various tasks from weather fetching to file organization, showcasing different aspects of Bash scripting.
-Scripts Overview
-1. Weather Fetcher
+## Documentation
 
-File: weather_fetcher.sh
+This repository contains a collection of Bash scripts designed to demonstrate practical applications of shell scripting. These scripts cover various tasks from weather fetching to file organization, showcasing different aspects of Bash scripting. Scripts Overview
+
+## Weather Fetcher
+
+**File:** weather_fetcher.sh
 
 This script fetches current weather data for a specified city using the Open-Meteo API.
 
-Features:
+**Features:**
 
-    Retrieves geographic coordinates for a given city name
+* Retrieves geographic coordinates for a given city name
+* Fetches current weather data (temperature, wind speed, humidity)
+* Displays formatted weather information
 
-    Fetches current weather data (temperature, wind speed, humidity)
+**Usage:**
 
-    Displays formatted weather information
+    bash ./weather_fetcher.sh [city name]
 
-Usage:
+## Geo-Location Finder
 
-bash
-./weather_fetcher.sh [city name]
-
-2. Geo-Location Finder
-
-File: geo_finder.sh
+**File:** geo_finder.sh
 
 This script retrieves latitude, longitude, and other geographic information for a specified city using the Open-Meteo Geocoding API.
 
-Features:
+**Features:**
 
-    Fetches geographic data for a given city name
+* Fetches geographic data for a given city name
+* Displays city name, latitude, longitude, country, and timezone
 
-    Displays city name, latitude, longitude, country, and timezone
+**Usage:**
 
-Usage:
+    bash ./geo_finder.sh [city name]
 
-bash
-./geo_finder.sh [city name]
+## Task Tracker
 
-3. Task Tracker
-
-File: task_tracker.sh
+**File:** task_tracker.sh
 
 A simple task management script that allows users to add, list, and manage tasks.
 
-Features:
+**Features:**
 
-    Add new tasks
+* Add new tasks
+* List existing tasks
+* Mark tasks as complete
+* Todo: Remove tasks
 
-    List existing tasks
+**Usage:**
 
-    Mark tasks as complete
+    bash ./task_tracker.sh
 
-    Remove tasks
+## File Organizer
 
-Usage:
-
-bash
-./task_tracker.sh
-
-4. File Organizer
-
-File: file_organizer.sh
+**File:** file_organizer.sh
 
 This script organizes files in a specified directory by moving them into categorized folders based on their file extensions.
 
-Features:
+**Features:**
 
-    Categorizes files into Images, Documents, and Archives
+* Categorizes files into Images, Documents, and Archives
+* Creates category folders if they don't exist
+* Moves files to appropriate folders based on extension
 
-    Creates category folders if they don't exist
+**Usage:**
 
-    Moves files to appropriate folders based on extension
+bash ./file_organizer.sh [directory path]
 
-Usage:
+**Requirements**
+* Bash shell
+* curl for API requests
+* jq for JSON parsing (in weather and geo-location scripts)
 
-bash
-./file_organizer.sh [directory path]
+**Installation**
 
-Requirements
+Clone this repository:
 
-    Bash shell
-
-    curl for API requests
-
-    jq for JSON parsing (in weather and geo-location scripts)
-
-Installation
-
-    Clone this repository:
-
-text
-git clone https://github.com/yourusername/bash-scripting-utilities.git
+    git clone https://github.com/yourusername/bash-scripting-utilities.git
 
 Navigate to the script directory:
 
-text
-cd bash-scripting-utilities
+    cd bash-scripting-utilities
 
 Make the scripts executable:
 
-    text
     chmod +x *.sh
 
-Contributing
+## Contributing
 
-Contributions to improve the scripts or add new utilities are welcome. Please feel free to submit a pull request or open an issue for any bugs or feature requests.
-License
+Contributions to improve the scripts or add new utilities are welcome. Please feel free to submit a pull request or open an issue for any bugs or feature requests. License
 
 This project is open source and available under the MIT License.
+
+
+
