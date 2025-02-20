@@ -1,0 +1,78 @@
+#!/bin/bash
+
+# Declare global variables to store city information
+# These will be accessible throughout the script
+declare -g city
+declare -g latitude
+declare -g longitude
+
+# Function to fetch geographic data for a given city
+fetch_geo() {
+    # $1 refers to the first argument passed to this function
+    local input_city=$1
+    
+    # Use curl to fetch data from the geocoding API
+    # -s makes curl silent (no progress meter)
+    # The API returns data in JSON format
+    local geo=$(curl -s "https://geocoding-api.open-meteo.com/v1/search?name=$input_city&count=1&language=en&format=json")
+    
+    # Use jq to parse the JSON and extract specific fields
+    # -r removes the quotes from the output
+    latitude=$(echo "$geo" | jq -r '.results[0].latitude')
+    longitude=$(echo "$geo" | jq -r '.results[0].longitude')
+    city=$(echo "$geo" | jq -r '.results[0].name')
+}
+
+# Function to fetch weather data using latitude and longitude
+fetch_weather_data() {
+    # Use curl to fetch data from the weather API
+    # We use the global latitude and longitude variables here
+    curl -s "https://api.open-meteo.com/v1/forecast?latitude=$latitude&longitude=$longitude&current=temperature_2m,wind_speed_10m,relative_humidity_2m&hourly=temperature_2m&forecast_days=1"
+}
+
+# Function to display weather information
+display_weather() {
+    # $1 refers to the first argument passed to this function
+    local weather_data=$1
+
+    # Extract specific weather information from the JSON data
+    local temperature=$(echo "$weather_data" | jq -r '.current.temperature_2m')
+    local wind_speed=$(echo "$weather_data" | jq -r '.current.wind_speed_10m')
+    local humidity=$(echo "$weather_data" | jq -r '.current.relative_humidity_2m')
+    local timezone=$(echo "$weather_data" | jq -r '.timezone')
+
+    # Print the weather information
+    echo "Current Weather:"
+    echo "City: $city"
+    echo "Timezone: $timezone"
+    echo "Temperature: $temperature°C"
+    echo "Wind Speed: $wind_speed m/s"
+    echo "Humidity: $humidity%"
+}
+
+# Main function to orchestrate the script's flow
+main() {
+    local input_city
+    
+    # Check if any command-line argument was provided
+    if [ $# -eq 0 ]; then
+        # If no argument, use Dublin as the default city
+        input_city="Dublin"
+    else
+        # If an argument was provided, use it as the city name
+        input_city="$1"
+    fi
+    
+    # Fetch geographic data for the city
+    fetch_geo "$input_city"
+    
+    # Fetch weather data using the latitude and longitude
+    local weather=$(fetch_weather_data)
+    
+    # Display the weather information
+    display_weather "$weather"
+}
+
+# Run the main function
+# "$@" passes all command-line arguments to the main function
+main "$@"
