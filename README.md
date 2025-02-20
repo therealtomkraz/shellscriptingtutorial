@@ -72,6 +72,29 @@ bash ./file_organizer.sh [directory path]
 * curl for API requests
 * jq for JSON parsing (in weather and geo-location scripts)
 
+## Create 1000 random files. 
+
+**File:** file_organizer.sh
+
+This script creates 1000 random files in a directory. 
+
+**Features:**
+
+* Creates 100 random files.
+* Types are Images, Documents, and Archives
+* Creates a folders if they don't exist
+* Files are of random size, all under 1k.
+
+**Usage:**
+
+bash ./file_organizer.sh [directory path]
+
+**Requirements**
+* Bash shell
+* python3
+* pythone module "random_word"
+
+
 **Installation**
 
 Clone this repository:
@@ -85,6 +108,8 @@ Navigate to the script directory:
 Make the scripts executable:
 
     chmod +x *.sh
+
+    
 
 ## Contributing
 
