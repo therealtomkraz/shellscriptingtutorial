@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Function to fetch geographic data for a given city
+fetch_geo() {
+    local city="$1"  # $1 is the first argument passed to this function
+    # Use curl to silently (-s) fetch data from the geocoding API
+    curl -s "https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json"
+}
+
+# Function to display latitude, longitude, and other information
+display_long_lat() {
+    local geo="$1"  # $1 is the JSON data passed to this function
+    # Use jq to extract specific fields from the JSON data
+    # -r removes the quotes from the output
+    local city=$(echo "$geo" | jq -r '.results[0].name')
+    local latitude=$(echo "$geo" | jq -r '.results[0].latitude')
+    local longitude=$(echo "$geo" | jq -r '.results[0].longitude')
+    local country=$(echo "$geo" | jq -r '.results[0].country')
+    local timezone=$(echo "$geo" | jq -r '.results[0].timezone')
+    # Print the extracted information
+    echo "$city, $latitude, $longitude, $country, $timezone"
+}
+
+# Main function to control the flow of the script
+main() {
+    local city_name
+
+    # Check if any command-line arguments were provided
+    if [ $# -eq 0 ]; then
+        # If no arguments, prompt the user for input
+        echo "Get Longitude and Latitude of a city"
+        read -p "Enter City Name: " city_name
+    else
+        # If an argument was provided, use it as the city name
+        city_name="$1"
+    fi
+
+    # Fetch geographic data for the specified city
+    local geodata=$(fetch_geo "$city_name")
+
+    # Check if the fetch was successful
+    if [ $? -eq 0 ]; then
+        # If successful, display the geographic information
+        display_long_lat "$geodata"
+    else
+        # If there was an error, print an error message
+        echo "Error Fetching Data"
+    fi
+}
+
+# Run the main function
+# "$@" passes all command-line arguments to the main function
+main "$@"
