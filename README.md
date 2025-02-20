@@ -94,13 +94,14 @@ This script creates 1000 random files in a directory.
 
     bash ./100randomfiles.py
 
-**Requirements**
+## Requirements
 * Bash shell
 * python3
 * pythone module "random_word"
+* git, tr and curl
 
 
-**Installation**
+## Installation
 
 Clone this repository:
 
