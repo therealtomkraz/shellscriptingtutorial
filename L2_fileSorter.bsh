@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/bin/bash   # This tells the system to use Bash to execute the script
 
 # Function to create directories if they don't exist
 create_dir() {
