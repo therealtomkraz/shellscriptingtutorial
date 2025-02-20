@@ -1,52 +1,62 @@
 #!/bin/bash
 
-#Create dir
+
+# Function to create directories if they don't exist
 create_dir() {
-        local dir=$1
-        if [ ! -d "$dir" ]; then
-                mkdir "$dir"
-                echo "Created Dir: $dir"
+        local dir=$1  # 'local' means this variable only exists in this function
+        if [ ! -d "$dir" ]; then  # Check if directory DOES NOT exist (-d)
+                mkdir "$dir"  # Create the directory
+                echo "Created Dir: $dir"  # Tell user we made it
         else
-                echo "Dir exsists: $dir" >/dev/null
+                # Silent error if directory exists (output redirected to null)
+                echo "Dir exsists: $dir" >/dev/null  
         fi
 }
 
-#Sort and order files into directories. 
+# Main function to sort files into categories
 organize_files() {
-        local dir=$1
+        local dir=$1  # Get target directory from function argument
 
-        imgs=("jpg" "png" "gif")
-        docs=("pdf" "docx" "txt")
-        arch=("zip" "gz" "rar")
+        # Define arrays of file extensions for each category
+        imgs=("jpg" "png" "gif")    # Image extensions
+        docs=("pdf" "docx" "txt")   # Document extensions
+        arch=("zip" "gz" "rar")     # Archive extensions
 
-        while IFS= read -r file; do
-                if [ "$file" ]; then
+        # Process each file in the directory
+        while IFS= read -r file; do  # Safe way to read filenames with spaces
+                if [ "$file" ]; then  # Check if file exists
+                        # Extract file extension using reverse-cut-reverse trick
                         ext=$( echo "$file" | rev | cut -d '.' -f1 | rev)
+                        
+                        # Check if extension is in images array
                         if [[ " ${imgs[@]} " =~ "$ext " ]]; then
                                 create_dir "$dir/Images"
-                                mv "$file" "$dir/Images"
+                                mv "$file" "$dir/Images"  # Move file to Images
+                        # Check if extension is in documents array
                         elif [[ " ${docs[@]} " =~ "$ext " ]]; then
                                 create_dir "$dir/Docs"
-                                mv "$file" "$dir/Docs"
+                                mv "$file" "$dir/Docs"     # Move file to Docs
+                        # Check if extension is in archives array
                         elif [[ " ${arch[@]} " =~ "$ext " ]]; then
                                 create_dir "$dir/Arch"
-                                mv "$file" "$dir/Arch"
+                                mv "$file" "$dir/Arch"     # Move file to Arch
                         fi
                 fi
-        done < <(find "$dir" -maxdepth 1 -type f)
+        done < <(find "$dir" -maxdepth 1 -type f)  # Find all files in directory
 }
 
-#Run the program
+# Main program flow
 main() {
-        echo "File Orginizer Script"
-        read -p "Enter directory to orginaize: " target_dir
+        echo "File Orginizer Script"  # Show script title
+        read -p "Enter directory to orginaize: " target_dir  # Get user input
 
-        if [ -d "$target_dir" ]; then
-                organize_files "$target_dir"
+        if [ -d "$target_dir" ]; then  # Check if directory exists (-d)
+                organize_files "$target_dir"  # Run organizer with user's directory
                 echo "Organization complete!"
         else
-                echo "Error: Dir not found!"
+                echo "Error: Dir not found!"  # Show error if directory invalid
         fi
 }
 
+# Start the program by calling main function
 main
