@@ -1,7 +1,7 @@
 
 ## Documentation
 
-This repository contains a collection of Bash scripts designed to demonstrate practical applications of shell scripting. These scripts cover various tasks from weather fetching to file organization, showcasing different aspects of Bash scripting. 
+This repository contains a collection of Bash scripts designed to demonstrate practical applications of shell scripting. These scripts cover various tasks from weather fetching to file organization, showcasing different aspects of Bash scripting. Each script builds on the previous one. Except for the 100 files one, it just creates 100 files for the file orginization script. You can find videos for each one over on my youtube channel. 
 
 ## Scripts Overview
 
