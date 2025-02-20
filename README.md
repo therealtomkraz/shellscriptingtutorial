@@ -88,7 +88,9 @@ Make the scripts executable:
 
 ## Contributing
 
-Contributions to improve the scripts or add new utilities are welcome. Please feel free to submit a pull request or open an issue for any bugs or feature requests. License
+Contributions to improve the scripts or add new utilities are welcome. Please feel free to submit a pull request or open an issue for any bugs or feature requests. 
+
+## License
 
 This project is open source and available under the MIT License.
 
