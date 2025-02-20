@@ -1,40 +1,11 @@
 
 ## Documentation
 
-This repository contains a collection of Bash scripts designed to demonstrate practical applications of shell scripting. These scripts cover various tasks from weather fetching to file organization, showcasing different aspects of Bash scripting. Scripts Overview
+This repository contains a collection of Bash scripts designed to demonstrate practical applications of shell scripting. These scripts cover various tasks from weather fetching to file organization, showcasing different aspects of Bash scripting. 
 
-## Weather Fetcher
+## Scripts Overview
 
-**File:** weather_fetcher.sh
-
-This script fetches current weather data for a specified city using the Open-Meteo API.
-
-**Features:**
-
-* Retrieves geographic coordinates for a given city name
-* Fetches current weather data (temperature, wind speed, humidity)
-* Displays formatted weather information
-
-**Usage:**
-
-    bash ./weather_fetcher.sh [city name]
-
-## Geo-Location Finder
-
-**File:** geo_finder.sh
-
-This script retrieves latitude, longitude, and other geographic information for a specified city using the Open-Meteo Geocoding API.
-
-**Features:**
-
-* Fetches geographic data for a given city name
-* Displays city name, latitude, longitude, country, and timezone
-
-**Usage:**
-
-    bash ./geo_finder.sh [city name]
-
-## Task Tracker
+### Task Tracker
 
 **File:** task_tracker.sh
 
@@ -51,7 +22,9 @@ A simple task management script that allows users to add, list, and manage tasks
 
     bash ./task_tracker.sh
 
-## File Organizer
+
+
+### File Organizer
 
 **File:** file_organizer.sh
 
@@ -72,7 +45,39 @@ bash ./file_organizer.sh [directory path]
 * curl for API requests
 * jq for JSON parsing (in weather and geo-location scripts)
 
-## Create 1000 random files. 
+### Geo-Location Finder
+
+**File:** geo_finder.sh
+
+This script retrieves latitude, longitude, and other geographic information for a specified city using the Open-Meteo Geocoding API.
+
+**Features:**
+
+* Fetches geographic data for a given city name
+* Displays city name, latitude, longitude, country, and timezone
+
+**Usage:**
+
+    bash ./geo_finder.sh [city name]
+
+### Weather Fetcher
+
+**File:** weather_fetcher.sh
+
+This script fetches current weather data for a specified city using the Open-Meteo API.
+
+**Features:**
+
+* Retrieves geographic coordinates for a given city name
+* Fetches current weather data (temperature, wind speed, humidity)
+* Displays formatted weather information
+
+**Usage:**
+
+    bash ./weather_fetcher.sh [city name]
+
+
+### Create 1000 random files. 
 
 **File:** file_organizer.sh
 
