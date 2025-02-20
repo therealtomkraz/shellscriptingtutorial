@@ -22,7 +22,8 @@ A simple task management script that allows users to add, list, and manage tasks
 
     bash ./task_tracker.sh
 
-[![Task Tracker](https://img.youtube.com/vi/7jsl5ZoylaU/0.jpg)](https://www.youtube.com/watch?v=7jsl5ZoylaU)
+[![Task Tracker](https://i.postimg.cc/SsRqpjQT/image.png)](https://www.youtube.com/watch?v=7jsl5ZoylaU)
+
 
 
 
