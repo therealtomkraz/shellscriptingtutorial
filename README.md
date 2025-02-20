@@ -87,7 +87,7 @@ This script creates 1000 random files in a directory.
 
 **Usage:**
 
-bash ./file_organizer.sh [directory path]
+    bash ./100randomfiles.py
 
 **Requirements**
 * Bash shell
